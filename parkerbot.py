@@ -54,7 +54,7 @@ class ParkerBot(TwitterBot):
 
 
     def make_attribution(self, tweet, prefix):
-        d20 = random.randint(0, 20)
+        d20 = random.randint(0, 19)
         if d20 in range(0, 5):
             self.post_tweet(prefix + " peak parker", reply_to=tweet)
         elif d20 in range(5, 10):

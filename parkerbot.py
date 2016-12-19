@@ -54,14 +54,14 @@ class ParkerBot(TwitterBot):
 
 
     def make_attribution(self, tweet, prefix):
-        d20 = random.randint(0, 19)
-        if d20 in range(0, 5):
+        d20 = random.randint(1, 20)
+        if d20 in range(1, 6):
             self.post_tweet(prefix + " peak parker", reply_to=tweet)
-        elif d20 in range(5, 10):
+        elif d20 in range(6, 11):
             self.post_tweet(prefix + " classic parker", reply_to=tweet)
-        elif d20 in range(10, 15):
+        elif d20 in range(11, 16):
             self.post_tweet(prefix + " doesn't get more parker", reply_to=tweet)
-        elif d20 in range(15, 20):
+        elif d20 in range(16, 21):
             self.post_tweet(prefix + " hoth couture parker", reply_to=tweet, media="hoth-couture.jpg")
             ##      ↑↑ MAX ROLL == HOTH COUTURE!!! ↑↑     ##
 

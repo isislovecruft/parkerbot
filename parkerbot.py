@@ -60,14 +60,16 @@ class ParkerBot(TwitterBot):
         pass
 
     def on_mention(self, tweet, prefix):
-        if (tweet.text.contains("parkerbot") or
-            tweet.text.contains("parkertron9000")):
-            self.post_tweet(prefix + " " + tweet.author.strip("@"))
-        elif tweet.text.endswith("!"):
-            self.post_tweet(prefix + " parker!", reply_to=tweet)
-        else:
-            self.post_tweet(prefix + " parker", reply_to=tweet)
+        bot_names = ["parkerbot", "parker bot", "parkertron9000"]
 
+        for name in bot_names:
+            if name in tweet.text:
+                self.post_tweet(prefix + " " + tweet.author.strip("@"))
+        else:
+            if tweet.text.endswith("!"):
+                self.post_tweet(prefix + " parker!", reply_to=tweet)
+            else:
+                self.post_tweet(prefix + " parker", reply_to=tweet)
 
     def make_attribution(self, tweet, prefix):
         d20 = random.randint(1, 20)

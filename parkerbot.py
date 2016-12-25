@@ -12,7 +12,7 @@ class ParkerBot(TwitterBot):
             self.config['api_key'] = fh.readline().strip()
             self.config['api_secret'] = fh.readline().strip()
             self.config['access_key'] = fh.readline().strip()
-            self.config[n'access_secret'] = fh.readline().strip()
+            self.config['access_secret'] = fh.readline().strip()
 
     def bot_init(self):
         self.hella_cred()

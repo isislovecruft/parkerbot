@@ -39,6 +39,22 @@ class ParkerBot(TwitterBot):
         ]
 
         self.register_custom_handler(self.do_favs, 15 * 60 * 60)
+        self.register_custom_handler(self.follow_parker, 24 * 60 * 60)
+
+    def follow_parker(self):
+        """If Parker is still following this bot, and Twitter has accidentally
+        made this bot unfollow him (a known Twitter bug which occurs
+        to all accounts randomly), then re-follow Parker again.
+        """
+        parker = "@xor"
+
+        if parker in self.api.followers():
+            if parker not in self.api.friends():
+                try:
+                    self.api.create_friendship(screen_name=parker, follow=True)
+                except Exception as err:
+                    self.log("Error! We're not following %s and can't: %s"
+                             % (parker, err))
 
     def on_scheduled_tweet(self):
         pass

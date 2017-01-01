@@ -65,7 +65,11 @@ class ParkerBot(TwitterBot):
 
         for name in bot_names:
             if name in tweet.text:
-                them = tweet.author.name.strip()
+                them = tweet.author.name.strip().lower().split()
+                if len(them) > 1:
+                    them = them[:-1]
+                if them:
+                    them = ' '.join(them)
                 if not them:
                     them = prefix.split()[0].strip("@")
                 if them:
